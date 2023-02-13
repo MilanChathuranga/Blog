@@ -79,7 +79,7 @@
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <script type="text/javascript">
         var posts = {!! json_encode($single_post->toArray()) !!};
-        CKEDITOR.disableAutoInline = true;
+
         $("div[contenteditable='true']").each(function (index) {
             var content_id = $(this).attr('id');
             CKEDITOR.inline(content_id, {

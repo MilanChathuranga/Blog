@@ -10,6 +10,7 @@ use App\Models\PostCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,10 +25,14 @@ class PostController extends Controller
         $user = Auth::user();
         if ($user->can('create post')) {
 //            if user have permission to create post
-            $categories = Category::with('children')->withCount('children')
-                ->whereNull('parent_id')->orderBy('title', 'ASC')
-                ->get();
-            $tags = Tag::all();
+            $categories = Cache::remember('categories', 60 * 60 * 24, function () {
+                return Category::with('children')->withCount('children')
+                    ->whereNull('parent_id')->orderBy('title', 'ASC')
+                    ->get();
+            });
+            $tags = Cache::remember('tags', 60 * 60 * 24, function () {
+                return Tag::all();
+            });
             return view('user.create', compact('tags', 'categories'));
         } else {
 //            user haven't permission to create page'
