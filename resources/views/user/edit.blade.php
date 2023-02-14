@@ -8,7 +8,7 @@
     </div>
 
     <div class="card-body ">
-        <form method="post" enctype="multipart/form-data" action="{{route('user.update_post',['post_id'=>$single_post->id])}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('update_post',['post_id'=>$single_post->id])}}">
             @csrf
             <div class="m-lg-4">
                 <div class="row">

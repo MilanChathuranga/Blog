@@ -1,11 +1,11 @@
 @extends('frontend.master')
 
 @section('content')
-    <div class="col-12">
-        <div class="page-header">
-            <h4 class="page-title">Service/Product</h4>
-        </div>
-    </div>
+{{--    <div class="col-12">--}}
+{{--        <div class="page-header">--}}
+{{--            <h4 class="page-title">Service/Product</h4>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="card card-body">
         <div class="row">
             @if(!count($posts) > 0)
@@ -19,7 +19,7 @@
                 @foreach($posts as $post)
                     <div class="col-sm-4 mb-3">
                         <a class=" text-decoration-none"
-                           href="{{route('user.single_view', ['post_id' => $post->id])}}">
+                           href="{{route('single_view', ['post_id' => $post->id])}}">
                             <div class="card">
                                 <img class="card-img-top w-auto" style="height: 250px"
                                      src="{{asset('storage/'.$post['image_path'])}}"

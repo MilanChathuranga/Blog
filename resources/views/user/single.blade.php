@@ -44,19 +44,19 @@
                             <div class="float-end">
                                 @if($single_post['published'] === 1)
                                     @can('un_publish post')
-                                        <a href="{{route('user.delete_post',[$single_post->id])}}"
+                                        <a href="{{route('delete_post',[$single_post->id])}}"
                                            class="btn btn-outline-danger form-control-sm text-decoration-none"><i
                                                 class="bi bi-lock-fill"></i> Un publish Post</a>
                                     @endcan
                                 @else
                                     @can('publish post')
-                                        <a href="{{route('user.active_post',[$single_post->id])}}"
+                                        <a href="{{route('active_post',[$single_post->id])}}"
                                            class="btn btn-outline-success form-control-sm"><i
                                                 class="bi bi-unlock-fill"></i> Publish Post</a>
                                     @endcan
                                 @endif
                                 @can('edit post')
-                                    <a href="{{route('user.edit_post',[$single_post->id])}}"
+                                    <a href="{{route('edit_post',[$single_post->id])}}"
                                        class="btn btn-outline-secondary form-control-sm"><i
                                             class="bi bi-pencil"></i></a>
                                 @endcan
@@ -89,7 +89,7 @@
                         // alert("Sending: " + data)
 
                         var request = jQuery.ajax({
-                            url: '/user/post/inline',
+                            url: '/post/inline',
                             type: "POST",
                             data: {
                                 post_id: JSON.stringify(posts.id),

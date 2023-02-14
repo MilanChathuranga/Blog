@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form method="post" enctype="multipart/form-data" action="{{route('user.store_post')}}">
+        <form method="post" enctype="multipart/form-data" action="{{route('store_post')}}">
             @csrf
             <div class="m-lg-4">
                 <div class="row">
@@ -112,3 +112,10 @@
         </form>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+@endpush

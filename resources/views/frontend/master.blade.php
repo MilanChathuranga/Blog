@@ -15,40 +15,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
 
+@include('layouts.sections.styles')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('styles')
 </head>
 <body>
-@include('frontend.layout.header')
 
-<main class="py-lg-4">
+<!-- Preloader -->
+@include('layouts.sections.preloader.preloader')
+
+<!-- Top Header Section -->
+@include('layouts.sections.header.header')
+{{--@include('frontend.layout.header')--}}
+
+<!-- Menu Section -->
+@include('layouts.sections.menu.menu')
+
+    @yield('page_header')
     @yield('content')
-</main>
 
-@include('frontend.layout.footer')
+@include('layouts.sections.footer.footer')
 
 <!-- Scripts -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>--}}
+
+<script src="{{asset('js/jquery-1.12.4.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
 
-
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('.js-example-basic-multiple').select2();
-    });
-    CKEDITOR.replace( 'post_content_editor_edit');
-    CKEDITOR.replace( 'post_content_editor');
+    CKEDITOR.replace('post_content_editor_edit');
+    CKEDITOR.replace('post_content_editor');
 </script>
 
+
+@include('layouts.sections.scripts')
 @stack('scripts')
+
 
 @include('sweetalert::alert')
 </body>
