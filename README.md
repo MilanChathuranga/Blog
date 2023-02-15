@@ -38,6 +38,7 @@
         int category_id
     }
     posts||--o{post_comments:post_comments
+    post_comments ||--o{post_comments:has
     post_comments{
         unsigned id pk
         int post_id
