@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Temp;
+namespace App\Http\Controllers\Contents;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('layouts.sections.home.home');
+        return view('contents.home');
     }
 }

@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('layouts.app')
 
 @section('title', 'page Tiyle')
 

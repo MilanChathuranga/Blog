@@ -1,4 +1,3 @@
-
 <section class="footer-area">
     <div class="container position-relative">
         <div class="row">
@@ -10,22 +9,22 @@
             <div class="col-lg-4 col-md-6 col-sm-6 col-9">
                 <h2>Important</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="portfolio.html">Work</a></li>
-                    <li><a href="portfolio-details.html">Single Service</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="faq.html">Support</a></li>
-                    <li><a href="career.html">Career</a></li>
-                    <li><a href="about.html">Privacy</a></li>
+                    <li><a href="{{asset('/')}}">Home</a></li>
+                    <li><a href="{{asset('about')}}">About Us</a></li>
+                    <li><a href="{{asset('pricing')}}">Pricing</a></li>
+                    <li><a href="{{asset('portfolio')}}">Work</a></li>
+                    <li><a href="{{asset('portfolio-details')}}">Single Service</a></li>
+                    <li><a href="{{asset('blog')}}">Blog</a></li>
+                    <li><a href="{{asset('contact_us')}}">Contact</a></li>
+                    <li><a href="{{asset('faq')}}">Support</a></li>
+                    <li><a href="{{asset('career')}}">Career</a></li>
+                    <li><a href="{{asset('about')}}">Privacy</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-9 col-12">
                 <h2>Our Newsletter</h2>
                 <p>Subscribe to our mailing list to get the up dates to your email inbox</p>
-                <form action="index.html">
+                <form action="#">
                     <input type="email" placeholder="E-mail">
                     <input type="submit" value="Subscribe">
                 </form>
