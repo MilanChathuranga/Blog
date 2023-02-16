@@ -16,4 +16,9 @@ class PostComment extends Model
         'content',
         'published_at',
     ];
+
+    public function childs()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id','id');
+    }
 }

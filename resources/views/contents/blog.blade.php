@@ -43,7 +43,8 @@
                         <div class="article-details">
                             <div class="article-author">
                                 <img src="images/clients/client-02.png" alt="Habu">
-                                <h6><a href="blog.html">Jason Harper</a> | <a href="blog.html">UI / UX Design</a> | <a href="blog.html">August
+                                <h6><a href="blog.html">Jason Harper</a> | <a href="blog.html">UI / UX Design</a> | <a
+                                        href="blog.html">August
                                         1, 2020</a></h6>
                             </div>
                             <div class="share-article">
@@ -115,183 +116,152 @@
                         <!-- Comment Area -->
                         <div class="comment-area">
                             <h2>COMMENT: <span>2</span></h2>
-                            <div class="comment-box">
-                                <div class="comment-author-thumbnail">
-                                    <img src="images/team-members/03_team-member-02.png" alt="Habu">
-                                </div>
-                                <div class="comment-body">
-                                    <div class="comment-details">
-                                        <a href="blog.html">
-                                            <h3>Jason Statham</h3>
-                                        </a>
-                                        <a href="blog.html" class="comment-date">July 06th, 2017</a>
+                            @foreach($comments as $comment)
+                                <div class="comment-box">
+                                    <div class="comment-author-thumbnail">
+                                        <img src="images/team-members/03_team-member-02.png" alt="Habu">
                                     </div>
-                                    <div class="main-comment">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta assumenda
-                                            expedita ipsum impedit blanditiis cupiditate quo illo saepe autem magni,
-                                            aspernatur exercitationem, consequuntur quas iste!</p>
-                                        <button>REPLY</button>
-                                    </div>
-                                    <div class="comment-box">
-                                        <div class="comment-author-thumbnail">
-                                            <img src="images/team-members/03_team-member-04.png" alt="Habu">
+                                    <div class="comment-body">
+                                        <div class="comment-details">
+                                            <a href="#">
+                                                <span id="comment_id" hidden>{{$comment->id}}</span>
+                                                <h3>{{ $comment->title }}</h3>
+                                            </a>
+                                            <a href="#" class="comment-date">{{$comment->published_at}}</a>
                                         </div>
-                                        <div class="comment-body">
-                                            <div class="comment-details">
-                                                <a href="blog.html">
-                                                    <h3>Herbie Darbage</h3>
-                                                </a>
-                                                <a href="blog.html" class="comment-date">July 06th, 2017</a>
-                                            </div>
-                                            <div class="main-comment">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-                                                    assumenda expedita ipsum impedit blanditiis cupiditate quo illo
-                                                    saepe autem magni, aspernatur exercitationem, consequuntur quas
-                                                    iste!</p>
-                                                <button>REPLY</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comment-box">
-                                        <div class="comment-author-thumbnail">
-                                            <img src="images/team-members/03_team-member-03.png" alt="Habu">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="comment-details">
-                                                <a href="blog.html">
-                                                    <h3>Jason Statham</h3>
-                                                </a>
-                                                <a href="blog.html" class="comment-date">July 06th, 2017</a>
-                                            </div>
-                                            <div class="main-comment">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-                                                    assumenda expedita ipsum impedit blanditiis cupiditate quo illo
-                                                    saepe autem magni, aspernatur exercitationem, consequuntur quas
-                                                    iste!</p>
-                                                <button>REPLY</button>
+                                        <div class="main-comment">
+                                            <p>{{$comment->content}}</p>
+                                            <button id="{{$comment->id}}" class="reply_btn">REPLY</button>
+                                            <div class="comment-form reply_form" id="reply_div{{$comment->id}}">
+                                                <div class="row">
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <input id="commenter{{$comment->id}}" type="text"
+                                                                   placeholder="Name">
+                                                        </div>
+                                                        <div class="col-sm-6 float-right">
+                                                            <button id="{{$comment->id}}"
+                                                                    class="large-white-button save_reply">Reply
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-11">
+                                                        <textarea id="comment_body{{$comment->id}}"
+                                                                  placeholder="Your Message"></textarea>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        {{-- `isNotEmpty` collection method was added in Laravel 5.3 --}}
+                                        @if($comment->childs->isNotEmpty())
+                                            @include('contents.reply', ['childs' => $comment->childs])
+                                        @endif
                                     </div>
                                 </div>
+                            @endforeach
+                            <div id="new_comment">
+
                             </div>
-                            <div class="comment-box">
-                                <div class="comment-author-thumbnail">
-                                    <img src="images/team-members/03_team-member-01.png" alt="Habu">
-                                </div>
-                                <div class="comment-body">
-                                    <div class="comment-details">
-                                        <a href="blog.html">
-                                            <h3>Jason Statham</h3>
-                                        </a>
-                                        <a href="blog.html" class="comment-date">July 06th, 2017</a>
-                                    </div>
-                                    <div class="main-comment">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta assumenda
-                                            expedita ipsum impedit blanditiis cupiditate quo illo saepe autem magni,
-                                            aspernatur exercitationem, consequuntur quas iste!</p>
-                                        <button>REPLY</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Comment Input -->
+                        <!-- Comment Input -->
                             <div class="comment-input">
-                                <h2>LEAVE A COMMENT</h2>
+                                <h2 id="comment_header">LEAVE A COMMENT</h2>
                                 <div class="comment-form">
                                     <div class="row">
-                                        <form action="#">
-                                            <div class="col-xl-6">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <input type="text" placeholder="Email">
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <textarea placeholder="Your Message"></textarea>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <button class="large-blue-button">POST COMMENT</button>
-                                            </div>
-                                        </form>
+                                        {{--                                        <form action="#">--}}
+                                        <div class="col-xl-6">
+                                            <input id="commenter" type="text" placeholder="Name">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <textarea id="comment_body" placeholder="Your Message"></textarea>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <button id="post_comment" class="large-blue-button">POST COMMENT
+                                            </button>
+                                        </div>
+                                        {{--                                        </form>--}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Sidebar Area -->
-                <div class="col-xl-3">
-                    <div class="row sidebar-area">
-                        <!-- search -->
-                        <div class="col-xl-12 search-area">
-                            <h2 class="sidebar-widget-title">Search</h2>
-                            <div class="search-form">
-                                <input type="text" placeholder="Search anything">
-                                <button><i class="fas fa-search"></i></button>
+                        <!-- Sidebar Area -->
+                        <div class="col-xl-3">
+                            <div class="row sidebar-area">
+                                <!-- search -->
+                                <div class="col-xl-12 search-area">
+                                    <h2 class="sidebar-widget-title">Search</h2>
+                                    <div class="search-form">
+                                        <input type="text" placeholder="Search anything">
+                                        <button><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <!-- categories -->
+                                <div class="col-xl-12 categories-area">
+                                    <h2 class="sidebar-widget-title">Categories</h2>
+                                    <ul>
+                                        <li><a href="blog-details.html">Smartphones</a></li>
+                                        <li><a href="blog-details.html">Headsets</a></li>
+                                        <li><a href="blog-details.html">Computers</a></li>
+                                        <li><a href="blog-details.html">Drones</a></li>
+                                        <li><a href="blog-details.html">Smartwatch</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Recent Posts -->
+                                <div class="col-xl-12 recent-posts-area">
+                                    <h2 class="sidebar-widget-title">Recent Posts</h2>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumbnail">
+                                            <a href="blog-details.html"><img src="images/blog/recent-post-1.png"
+                                                                             alt="Habu"></a>
+                                        </div>
+                                        <div class="recent-post-title">
+                                            <a href="blog-details.html">
+                                                <h3>Nam ac elit a ante commodo</h3>
+                                            </a>
+                                            <span>by </span><a href="blog.html">admin</a>
+                                        </div>
+                                    </div>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumbnail">
+                                            <a href="blog-details.html"><img src="images/blog/recent-post-2.png"
+                                                                             alt="Habu"></a>
+                                        </div>
+                                        <div class="recent-post-title">
+                                            <a href="blog-details.html">
+                                                <h3>Nam ac elit a ante commodo</h3>
+                                            </a>
+                                            <span>by </span><a href="blog.html">admin</a>
+                                        </div>
+                                    </div>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumbnail">
+                                            <a href="blog-details.html"><img src="images/blog/recent-post-3.png"
+                                                                             alt="Habu"></a>
+                                        </div>
+                                        <div class="recent-post-title">
+                                            <a href="blog-details.html">
+                                                <h3>Nam ac elit a ante commodo</h3>
+                                            </a>
+                                            <span>by </span><a href="blog.html">admin</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Popular Tags -->
+                                <div class="col-xl-12 popular-tags">
+                                    <h2 class="sidebar-widget-title">Popular Tags</h2>
+                                    <a href="blog.html">UI/UX</a><a href="blog.html">WEB</a><a
+                                        href="blog.html">DEVELOP</a><a
+                                        href="blog.html">AGENCY</a><a
+                                        href="#">SMM</a>
+                                </div>
+                                <!-- ad banner -->
+                                <div class="col-xl-12 ad-banner">
+                                    <a href="index.html"><img src="images/banner/banner-advert.png" alt="Habu"></a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- categories -->
-                        <div class="col-xl-12 categories-area">
-                            <h2 class="sidebar-widget-title">Categories</h2>
-                            <ul>
-                                <li><a href="blog-details.html">Smartphones</a></li>
-                                <li><a href="blog-details.html">Headsets</a></li>
-                                <li><a href="blog-details.html">Computers</a></li>
-                                <li><a href="blog-details.html">Drones</a></li>
-                                <li><a href="blog-details.html">Smartwatch</a></li>
-                            </ul>
-                        </div>
-                        <!-- Recent Posts -->
-                        <div class="col-xl-12 recent-posts-area">
-                            <h2 class="sidebar-widget-title">Recent Posts</h2>
-                            <div class="recent-post">
-                                <div class="recent-post-thumbnail">
-                                    <a href="blog-details.html"><img src="images/blog/recent-post-1.png" alt="Habu"></a>
-                                </div>
-                                <div class="recent-post-title">
-                                    <a href="blog-details.html">
-                                        <h3>Nam ac elit a ante commodo</h3>
-                                    </a>
-                                    <span>by </span><a href="blog.html">admin</a>
-                                </div>
-                            </div>
-                            <div class="recent-post">
-                                <div class="recent-post-thumbnail">
-                                    <a href="blog-details.html"><img src="images/blog/recent-post-2.png" alt="Habu"></a>
-                                </div>
-                                <div class="recent-post-title">
-                                    <a href="blog-details.html">
-                                        <h3>Nam ac elit a ante commodo</h3>
-                                    </a>
-                                    <span>by </span><a href="blog.html">admin</a>
-                                </div>
-                            </div>
-                            <div class="recent-post">
-                                <div class="recent-post-thumbnail">
-                                    <a href="blog-details.html"><img src="images/blog/recent-post-3.png" alt="Habu"></a>
-                                </div>
-                                <div class="recent-post-title">
-                                    <a href="blog-details.html">
-                                        <h3>Nam ac elit a ante commodo</h3>
-                                    </a>
-                                    <span>by </span><a href="blog.html">admin</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Popular Tags -->
-                        <div class="col-xl-12 popular-tags">
-                            <h2 class="sidebar-widget-title">Popular Tags</h2>
-                            <a href="blog.html">UI/UX</a><a href="blog.html">WEB</a><a href="blog.html">DEVELOP</a><a href="blog.html">AGENCY</a><a
-                                href="#">SMM</a>
-                        </div>
-                        <!-- ad banner -->
-                        <div class="col-xl-12 ad-banner">
-                            <a href="index.html"><img src="images/banner/banner-advert.png" alt="Habu"></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- =========================== 5. Subscribe Section =========================================== -->

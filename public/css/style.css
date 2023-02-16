@@ -1,4 +1,4 @@
-/* 
+/*
 
 Theme Name: Habu - agency HTML template
 Author: wpsmasher
@@ -42,7 +42,7 @@ Version: 1.0.0
 
 6. blog.html
     # Blog Section
-    # Subscribe Section 
+    # Subscribe Section
 
 7. blog-details.html
     # Article Area
@@ -1768,6 +1768,11 @@ section.blog-details input[type="text"]::placeholder {
 .comment-box {
     display: flex;
     margin-top: 60px;
+}
+.comment-box-reply {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .comment-details {

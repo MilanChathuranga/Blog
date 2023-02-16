@@ -26,7 +26,7 @@ class PostController extends Controller
         if ($user->can('create post')) {
 //            if user have permission to create post
             $categories = Cache::remember('categories', 60 * 60 * 24, function () {
-                return Category::with('children')->withCount('children')
+                return Category::with('childs')->withCount('childs')
                     ->whereNull('parent_id')->orderBy('title', 'ASC')
                     ->get();
             });

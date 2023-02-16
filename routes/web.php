@@ -36,7 +36,6 @@ use App\Http\Controllers\Contents;
 /*Template Routes*/
 Route::get('/', [Contents\HomeController::class, 'index'])->name('home');
 Route::get('/faq', [Contents\FAQController::class, 'index'])->name('faq');
-Route::get('/blog', [Contents\BlogController::class, 'index'])->name('blog');
 Route::get('/about', [Contents\AboutController::class, 'index'])->name('about');
 Route::get('/career', [Contents\CareerController::class, 'index'])->name('career');
 Route::get('/pricing', [Contents\PricingController::class, 'index'])->name('pricing');
@@ -44,5 +43,8 @@ Route::get('/portfolio', [Contents\PageController::class, 'index'])->name('portf
 Route::get('/contact_us', [Contents\ContactUsController::class, 'index'])->name('contact_us');
 Route::get('/blog-details', [Contents\BlogDetailsController::class, 'index'])->name('blog-details');
 Route::get('/portfolio-details', [Contents\PortfolioDetailsController::class, 'index'])->name('portfolio-details');
+
+Route::get('/blog', [Contents\BlogController::class, 'index'])->name('blog');
+Route::post('/blog', [Contents\BlogController::class, 'comment'])->name('comment');
 
 
