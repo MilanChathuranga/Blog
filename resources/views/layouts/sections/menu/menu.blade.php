@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-2 d-flex align-items-center">
-                <a href="{{asset('/')}}"><img class="logo" src="images/logo/site-logo/logo.png" alt="Habu"></a>
+                <a href="{{asset('/')}}"><img class="logo" src="/images/logo/site-logo/logo.png" alt="Habu"></a>
             </div>
             <div class="col-10 d-flex align-items-center">
                 <nav id="mobile-menu" class="menu-area d-lg-flex align-items-center ml-auto">
@@ -30,9 +30,9 @@
                         </li>
                         <li>
                             <a href="{{asset('blog')}}">Blog</a>
-                            <ul>
-                                <li><a href="{{asset('blog-details')}}">Blog Details</a></li>
-                            </ul>
+{{--                            <ul>--}}
+{{--                                <li><a href="{{asset('blog-details')}}">Blog Details</a></li>--}}
+{{--                            </ul>--}}
                         </li>
                     </ul>
                 </nav>

@@ -1,12 +1,12 @@
 @foreach($childs as $parent)
     <div class="comment-box-reply">
         <div class="comment-author-thumbnail">
-            <img src="images/team-members/03_team-member-04.png" alt="Habu">
+            <img src="/images/team-members/03_team-member-04.png" alt="Habu">
         </div>
         <div class="comment-body">
             <div class="comment-details">
                 <a href="blog.html">
-                    <span id="comment_id" hidden>{{$comment->id}}</span>
+{{--                    <span id="comment_id" hidden>{{$comment->id}}</span>--}}
                     <h3>{{$parent->title}}</h3>
                 </a>
                 <a href="blog.html" class="comment-date">{{$parent->published_at}}</a>

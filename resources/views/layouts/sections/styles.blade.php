@@ -1,6 +1,6 @@
 <!-- favicon -->
-<link rel="apple-touch-icon" href="apple_touch_icon.png">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="{{asset('images/apple_touch_icon.png')}}">
+<link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
 
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
