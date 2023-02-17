@@ -46,7 +46,8 @@
                             <div class="article-details">
                                 <div class="article-author">
                                     <img src="/images/clients/client-02.png" alt="Habu">
-                                    <h6><a href="{{asset('blog')}}">Jason Harper</a> | <a href="{{asset('blog')}}">UI / UX Design</a> |
+                                    <h6><a href="{{asset('blog')}}">Jason Harper</a> | <a href="{{asset('blog')}}">UI /
+                                            UX Design</a> |
                                         <a href="{{asset('blog')}}">August
                                             1, 2020</a></h6>
                                 </div>
@@ -59,8 +60,17 @@
                                 </div>
                             </div>
                             <div class="article-thumbnail">
-                                <img src="{{asset('storage/'.$single_post['image_path'])}}" alt="Habu">
+                                <img style="height: 500px;" src="{{asset('storage/'.$single_post['image_path'])}}"
+                                     alt="Habu">
                             </div>
+                            {{--// use here to casting part--}}
+                            <div class="col-xl-12 popular-tags mt-3">
+                                <h2 class="sidebar-widget-title">Post Tags</h2>
+                                @foreach($single_post['tags'] as $tag)
+                                    <a class="text-decoration-none">{{$tag}}</a>
+                                @endforeach
+                            </div>
+                            {{--// use here to casting part--}}
                             <div class="article-body">
                                 <p>{{$single_post['summary']}}</p>
 
@@ -181,7 +191,8 @@
                                 <h2 class="sidebar-widget-title">Recent Posts</h2>
                                 <div class="recent-post">
                                     <div class="recent-post-thumbnail">
-                                        <a href="blog-details.html"><img src="/images/blog/recent-post-1.png" alt="Habu"></a>
+                                        <a href="blog-details.html"><img src="/images/blog/recent-post-1.png"
+                                                                         alt="Habu"></a>
                                     </div>
                                     <div class="recent-post-title">
                                         <a href="blog-details.html">
@@ -192,7 +203,8 @@
                                 </div>
                                 <div class="recent-post">
                                     <div class="recent-post-thumbnail">
-                                        <a href="blog-details.html"><img src="/images/blog/recent-post-2.png" alt="Habu"></a>
+                                        <a href="blog-details.html"><img src="/images/blog/recent-post-2.png"
+                                                                         alt="Habu"></a>
                                     </div>
                                     <div class="recent-post-title">
                                         <a href="blog-details.html">
@@ -203,7 +215,8 @@
                                 </div>
                                 <div class="recent-post">
                                     <div class="recent-post-thumbnail">
-                                        <a href="blog-details.html"><img src="/images/blog/recent-post-3.png" alt="Habu"></a>
+                                        <a href="blog-details.html"><img src="/images/blog/recent-post-3.png"
+                                                                         alt="Habu"></a>
                                     </div>
                                     <div class="recent-post-title">
                                         <a href="blog-details.html">

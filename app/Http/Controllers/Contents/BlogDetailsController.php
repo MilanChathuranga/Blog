@@ -43,6 +43,9 @@ class BlogDetailsController extends Controller
             }
             $comments = PostComment::where('post_id', $post_id)->whereParentId(0)->get();
 
+//            check casting part
+//            dd($single_post->toArray());
+
             return view('contents.blog-details', compact('single_post', 'category_name', 'tag_names','comments'));
         } else {
 //            if user haven't permission

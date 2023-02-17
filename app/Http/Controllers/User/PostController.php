@@ -25,10 +25,8 @@ class PostController extends Controller
         $user = Auth::user();
         if ($user->can('create post')) {
 //            if user have permission to create post
-            $categories = Cache::remember('categories', 60 * 60 * 24, function () {
-                return Category::with('childs')->withCount('childs')
-                    ->whereNull('parent_id')->orderBy('title', 'ASC')
-                    ->get();
+            $categories = Cache::remember('categories', 60 * 60 * 24 * 365, function () {
+                return Category::whereParentId(0)->get();
             });
             $tags = Cache::remember('tags', 60 * 60 * 24, function () {
                 return Tag::all();
@@ -40,30 +38,6 @@ class PostController extends Controller
         }
     }
 
-//view single view page
-    public function single_view($post_id)
-    {
-        //check user permission
-        $user = Auth::user();
-        if ($user->can('view post')) {
-//            if user have permission to view single post
-
-            $single_post = Post::find($post_id);
-
-            $selected_category = PostCategory::where('post_id', $post_id)->first();
-            $category_name = Category::where('id', $selected_category['category_id'])->value('title');
-
-            $tag_names = [];
-            $selected_tags = PostTag::where('post_id', $post_id)->get();
-            foreach ($selected_tags as $selected_tag) {
-                array_push($tag_names, Tag::where('id', $selected_tag['tag_id'])->value('title'));
-            }
-            return view('user.single', compact('single_post', 'category_name', 'tag_names'));
-        } else {
-//            if user haven't permission
-            return redirect()->route('user.home')->with('toast_error', 'Ops! You dont have Permission!');
-        }
-    }
 
     public function store_post(Request $request)
     {
@@ -115,6 +89,32 @@ class PostController extends Controller
             return redirect()->route('user.home')->with('toast_error', 'Ops! You dont have Permission!');
         }
     }
+
+//view single view page
+    public function single_view($post_id)
+    {
+        //check user permission
+        $user = Auth::user();
+        if ($user->can('view post')) {
+//            if user have permission to view single post
+
+            $single_post = Post::find($post_id);
+
+            $selected_category = PostCategory::where('post_id', $post_id)->first();
+            $category_name = Category::where('id', $selected_category['category_id'])->value('title');
+
+            $tag_names = [];
+            $selected_tags = PostTag::where('post_id', $post_id)->get();
+            foreach ($selected_tags as $selected_tag) {
+                array_push($tag_names, Tag::where('id', $selected_tag['tag_id'])->value('title'));
+            }
+            return view('user.single', compact('single_post', 'category_name', 'tag_names'));
+        } else {
+//            if user haven't permission
+            return redirect()->route('user.home')->with('toast_error', 'Ops! You dont have Permission!');
+        }
+    }
+
 
 //    public function inline(Request $request)
 //    {

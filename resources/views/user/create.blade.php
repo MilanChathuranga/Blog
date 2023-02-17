@@ -1,11 +1,34 @@
-@extends('frontend.master')
+@extends('layouts.app')
 
-@section('content')
-    <div class="col-12">
-        <div class="page-header">
-            <h4 class="page-title">Create your existing Service/Product</h4>
+
+@section('page_header')
+    @parent
+    <div class="page-header">
+        <div class="about-banner-shape-left wow animate__animated animate__fadeInLeft">
+            <img src="/images/shapes/03_shape-01.png" class="wow animate__animated animate__pulse animate__infinite"
+                 alt="habu">
+        </div>
+        <div class="about-banner-shape-right wow animate__animated animate__fadeInRight animate__delay-1s">
+            <img src="/images/shapes/03_shape-02.png" class="wow animate__animated animate__pulse animate__infinite"
+                 alt="habu">
+        </div>
+        <div class="container">
+            <div class="page-header-text wow animate__animated animate__fadeInDown">
+                <h1 class="page-title">Create New Blog</h1>
+                <span>Home</span>
+                <span class="span-divider font-weight-bold">|</span>
+                <span class="font-weight-bold">Create Blog</span>
+                <div class="page-banner-shape-title">
+                    <img src="/images/shapes/03_shape-03.png"
+                         class="wow animate__animated animate__fadeInUp animate__delay-1s" alt="">
+                </div>
+            </div>
         </div>
     </div>
+
+@endsection
+
+@section('content')
     <div class="card-body">
         <form method="post" enctype="multipart/form-data" action="{{route('store_post')}}">
             @csrf
@@ -17,10 +40,10 @@
                                 <select class="form-control form-control-sm" name="category_id">
                                     @if(count($categories)> 0)
                                         @foreach($categories as $category)
-                                            @if(count($category->children) >0)
+                                            @if($category->childs->isNotEmpty())
                                                 <optgroup label="{{$category['title']}}">
-                                                    @if(count($category->children) >0)
-                                                        @foreach($category->children as $child)
+                                                    @if($category->childs->isNotEmpty())
+                                                        @foreach($category->childs as $child)
                                                             <option value="{{$child['id']}}">{{$child['title']}}</option>
                                                         @endforeach
                                                     @endif
@@ -62,7 +85,7 @@
                             <select class="form-control form-control-sm js-example-basic-multiple w-100"
                                     name="tags_id[]" multiple="multiple">
                                 @foreach($tags as $tag)
-                                    <option value="{{$tag->id}}">{{$tag->title}}</option>
+                                    <option value="{{$tag->title}}">{{$tag->title}}</option>
                                 @endforeach
                             </select>
                         </div>

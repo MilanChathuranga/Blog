@@ -22,8 +22,6 @@ Auth::routes();
 ///* User Routes */
 //
 //
-//Route::post('/post/create', [User\PostController::class, 'store_post'])->name('store_post');
-//Route::get('/post/create', [User\PostController::class, 'create_post'])->name('create_post');
 //Route::post('/post/edit/{post_id}', [User\PostController::class, 'update_post'])->name('update_post');
 Route::get('/blog-details/{post_id}', [Contents\BlogDetailsController::class, 'edit_post'])->name('edit_post');
 Route::get('/blog-details/{post_id}', [Contents\BlogDetailsController::class, 'delete_post'])->name('delete_post');
@@ -34,6 +32,8 @@ Route::get('/blog-details/{post_id}', [Contents\BlogDetailsController::class, 's
 /*Template Routes*/
 Route::get('/blog_list', [Contents\BlogController::class, 'index'])->name('blog_list');
 Route::post('/blog-details', [Contents\BlogDetailsController::class, 'inline'])->name('inline');
+Route::post('/blog/create', [Contents\BlogController::class, 'store_post'])->name('store_post');
+Route::get('/blog/create', [Contents\BlogController::class, 'create_post'])->name('create_post');
 
 
 Route::get('/', [Contents\HomeController::class, 'index'])->name('home');

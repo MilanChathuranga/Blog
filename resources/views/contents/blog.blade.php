@@ -6,11 +6,11 @@
     @parent
     <div class="page-header">
         <div class="about-banner-shape-left wow animate__animated animate__fadeInLeft">
-            <img src="images/shapes/03_shape-01.png" class="wow animate__animated animate__pulse animate__infinite"
+            <img src="/images/shapes/03_shape-01.png" class="wow animate__animated animate__pulse animate__infinite"
                  alt="habu">
         </div>
         <div class="about-banner-shape-right wow animate__animated animate__fadeInRight animate__delay-1s">
-            <img src="images/shapes/03_shape-02.png" class="wow animate__animated animate__pulse animate__infinite"
+            <img src="/images/shapes/03_shape-02.png" class="wow animate__animated animate__pulse animate__infinite"
                  alt="habu">
         </div>
         <div class="container">
@@ -20,7 +20,7 @@
                 <span class="span-divider font-weight-bold">|</span>
                 <span class="font-weight-bold">News</span>
                 <div class="page-banner-shape-title">
-                    <img src="images/shapes/03_shape-03.png"
+                    <img src="/images/shapes/03_shape-03.png"
                          class="wow animate__animated animate__fadeInUp animate__delay-1s" alt="">
                 </div>
             </div>

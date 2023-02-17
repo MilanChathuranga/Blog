@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('summary')->nullable();
             $table->integer('published')->nullable();
             $table->text('content');
+            $table->string('tags');
             $table->timestamp('published_at')->useCurrent();
             $table->timestamps();
         });
