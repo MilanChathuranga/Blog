@@ -8,6 +8,7 @@
         string meta_title
         string slug
         string summary
+        string tags
         int published
         string content
         timestamp published_at
